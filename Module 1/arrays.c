@@ -45,39 +45,41 @@
 
 // SOME OF TWO MATRIX::
 
-#include<stdio.h>
-int main()
-{
-    int a[20][20],b[20][20],c[20][20];
-    int i,j,k;
-    int n,m,p,q;
-    printf("Enter n m p q respectevely: ");
-    scanf("%d",&n);scanf("%d",&m);scanf("%d",&p);scanf("%d",&q);
-    // row major order;
-    for (i = 0 ; i < n ; i++) // 1st matrix;
-        for(j = 0 ; j<m ; j++)
-        {
-            scanf("%d",&a[i][j]);
-        }
+// #include<stdio.h>
+// int main()
+// {
+//     int a[20][20],b[20][20],c[20][20];
+//     int i,j,k;
+//     int n,m,p,q;
+//     printf("Enter n m p q respectevely: ");
+//     scanf("%d",&n);scanf("%d",&m);scanf("%d",&p);scanf("%d",&q);
+//     // row major order;
+//     for (i = 0 ; i < n ; i++) // 1st matrix;
+//         for(j = 0 ; j<m ; j++)
+//         {
+//             scanf("%d",&a[i][j]);
+//         }
 
-    for (i = 0 ; i < p ; i++) // 2st matrix;
-        for(j = 0 ; j<q ; j++)
-        {
-            scanf("%d",&b[i][j]);
-        }
+//     for (i = 0 ; i < p ; i++) // 2st matrix;
+//         for(j = 0 ; j<q ; j++)
+//         {
+//             scanf("%d",&b[i][j]);
+//         }
 
-    for (i = 0 ; i < n ; i++) // suming
-        for(j = 0 ; j<q ; j++)
-        {
-            c[i][j] = a[i][j] + b[i][j];
-        }
-    for (i = 0 ; i < n ; i++)
-    {
-        for(j = 0 ; j<q ; j++)
-        {
-            printf("%d    ",c[i][j]);
-        }
-        printf("\n\n");
-    }
-    return 0;
-}
+//     for (i = 0 ; i < n ; i++) // suming
+//         for(j = 0 ; j<q ; j++)
+//         {
+//             c[i][j] = a[i][j] + b[i][j];
+//         }
+//     for (i = 0 ; i < n ; i++)
+//     {
+//         for(j = 0 ; j<q ; j++)
+//         {
+//             printf("%d    ",c[i][j]);
+//         }
+//         printf("\n\n");
+//     }
+//     return 0;
+// }
+
+
