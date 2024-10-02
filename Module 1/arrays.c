@@ -71,10 +71,13 @@ int main()
         {
             c[i][j] = a[i][j] + b[i][j];
         }
-    for (i = 0 ; i < n ; i++) // printing 3X3
+    for (i = 0 ; i < n ; i++)
+    {
         for(j = 0 ; j<q ; j++)
         {
-            printf("%d ",c[i][j]);
+            printf("%d    ",c[i][j]);
         }
+        printf("\n\n");
+    }
     return 0;
 }
