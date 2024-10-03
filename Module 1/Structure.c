@@ -10,10 +10,15 @@ int main()
         int CarAge;
         int CarPrice;
     }car;
+
+    car *pointer; // defining 
     
     car skoda,aulto; // user defined function;
+    
+    pointer = &skoda; // structure variable
 
-    EnterDetails(skoda.CarVerson , skoda.CarAge , skoda.CarPrice);
+    strcpy(pointer->CarVerson,"new");
+    printf("Car is %s",pointer->CarVerson);
     printf("\n\n");
     EnterDetails(aulto.CarVerson , aulto.CarAge , aulto.CarPrice);
 
@@ -25,5 +30,4 @@ void EnterDetails(char CarVerson[20] , int CarAge , int CarPrice)
     printf("\nEnter the car price: ");scanf("%d",&CarPrice);
     system("cls");
     printf("Car is %s its age is %d and its price is %d",CarVerson,CarAge,CarPrice);
-    
 }
