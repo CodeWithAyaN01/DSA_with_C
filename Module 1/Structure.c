@@ -11,9 +11,9 @@ int main()
         int CarPrice;
     }car;
 
-    car *pointer; // defining 
-    
     car skoda,aulto; // user defined function;
+    
+    car *pointer; // defining 
     
     pointer = &skoda; // structure variable
 
