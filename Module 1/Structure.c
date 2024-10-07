@@ -36,7 +36,7 @@
 #include <stdio.h>
 
 // Define the Address structure
-struct Address {
+struct details {
     char city[50];
     int pin;
 };
@@ -45,7 +45,7 @@ struct Address {
 struct Student {
     char name[50];
     int roll;
-    struct Address address;  // Nested structure
+    struct details address;  // Nested structure
 };
 
 int main() {
