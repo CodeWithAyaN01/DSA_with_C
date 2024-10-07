@@ -1,21 +1,21 @@
-// #include <stdio.h>
-// int main() {
-//     int arr[] = {10, 20, 30, 40, 50};  // Initial array
-//     int N = 5;  // Initial size of array
-//     int ITEM = 25;  // New element to insert
-//     int K = 2;  // Position where the element will be inserted (0-based index)
+#include <stdio.h>
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};  // Initial array
+    int N = 5;  // Initial size of array
+    int ITEM = 25;  // New element to insert
+    int K = 2;  // Position where the element will be inserted (0-based index)
     
-//     for (int i = N ; i>K ; i--)
-//     {
-//         arr[i] = arr[i-1];
-//     }
-//     arr[K] = ITEM;
+    for (int i = N ; i>K ; i--)
+    {
+        arr[i] = arr[i-1];
+    }
+    arr[K] = ITEM;
 
-//     for (int i = 0 ; i< N+1 ; i++)
-//     {
-//         printf("%d ",arr[i]);
-//     }
-// }
+    for (int i = 0 ; i< N+1 ; i++)
+    {
+        printf("%d ",arr[i]);
+    }
+}
 
 
 // deleting vlues
@@ -82,4 +82,20 @@
 //     return 0;
 // }
 
-
+// #include<stdio.h>
+// #define max 10
+// int stack[max];
+// int top = -1;
+// void read(int arr[] , int length)
+// {
+//     for (int i = 0 ; i<length ; i++ )
+//     {
+//          scanf("%d",&arr[i]);
+//     }
+// }
+// int main()
+// {
+//     int list[200];
+//     read(list,10); //  calling
+//     return 0;
+// }
