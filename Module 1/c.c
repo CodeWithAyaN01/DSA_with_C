@@ -40,3 +40,27 @@
 //     }    
 //     return 0;
 // }
+
+// INSERTING ELEMENT 
+
+#include<stdio.h>
+int main()
+{
+    int arr[] = {1,2,3,4,5,6,7,8};
+    int length = 8;
+    int item = 111;
+    int pos = 5;
+
+    for (int i = length ; i<pos ; i--)
+    {
+        arr[i+1] = arr[i];
+    }
+    arr[pos] = item;
+    // pritnng
+    length++;
+    for (int i = 0 ; i<length ; i++)
+    {
+        printf("%d\t",arr[i]);
+    }
+    return 0;
+}
