@@ -1,19 +1,22 @@
 #include<stdio.h>
-int count = 0;
-int i = 0;
-void length(char name[])
-{
-    while (name[i] != '\0')
-    {
-        count++;
-        i++;
-    }
-    printf("length is %d",count);
-}
+#include<stdlib.h>
 int main()
 {
-    char n[20];
-    printf("Enter length: ");gets(n);
-    length(n);
+    int *ptr;
+    int arr[10];
+    int size = 6;
+    ptr = &arr; // assigning values to ptr
+    ptr = (int*)malloc(size * sizeof(int));
+    printf("Enter arr values: ");
+    for (int i = 0 ; i<size ; i++)
+    {
+        scanf("%d",&ptr[i]);
+    }
+    printf("printing values \n");
+    for (int i = 0 ; i<size ; i++)
+    {
+        printf("%d \t",*ptr);
+        ptr++;
+    }
     return 0;
 }
