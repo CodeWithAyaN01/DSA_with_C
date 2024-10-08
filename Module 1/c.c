@@ -43,24 +43,64 @@
 
 // INSERTING ELEMENT 
 
+// #include<stdio.h>
+// int main()
+// {
+//     int arr[] = {1,2,3,4,5,6,7,8};
+//     int length = 8;
+//     int item = 111;
+//     int pos = 5;
+
+//     for (int i = length ; i<pos ; i--)
+//     {
+//         arr[i+1] = arr[i];
+//     }
+//     arr[pos] = item;
+//     // pritnng
+//     length++;
+//     for (int i = 0 ; i<length ; i++)
+//     {
+//         printf("%d\t",arr[i]);
+//     }
+//     return 0;
+// }
+
 #include<stdio.h>
+#include<stdlib.h>
+int fibonachi(int num)
+{
+    if (num==0)
+    {
+        return 1;
+
+    }else if (num == 1)
+    {
+        return 1;
+    }
+    else
+    {
+        return fibonachi(num-1) + fibonachi(num-2);
+    }
+}
+int factorial(int n)
+{
+    if (n == 0)
+    {
+        return 1;
+    }
+    else if (n == 1)
+    {
+        return 1;
+    }
+    else
+    {
+       return  n * factorial(n-1);
+    }
+}
 int main()
 {
-    int arr[] = {1,2,3,4,5,6,7,8};
-    int length = 8;
-    int item = 111;
-    int pos = 5;
-
-    for (int i = length ; i<pos ; i--)
-    {
-        arr[i+1] = arr[i];
-    }
-    arr[pos] = item;
-    // pritnng
-    length++;
-    for (int i = 0 ; i<length ; i++)
-    {
-        printf("%d\t",arr[i]);
-    }
-    return 0;
+    int a = 5;
+    factorial(5);
+    printf("factorila of 5 is\n %d",factorial(5));
+    printf("fibo of 5 is\n %d",fibonachi(5));
 }

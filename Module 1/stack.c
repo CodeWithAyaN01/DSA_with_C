@@ -96,3 +96,36 @@ int main()
     }
     
 }
+
+
+
+// #include<stdio.h>
+// #define max 10
+// struct stack
+// {
+//     int arr[max];
+//     int top;
+// };
+// void start(struct stack *s)
+// {
+//     s->top = -1;
+// }
+// void push(struct stack *s,int m)
+// {
+//     s->top++;
+//     s->arr[s->top] = m;
+// }
+// int pop(struct stack *s)
+// {
+//     int poppedItem = s->arr[s->top];
+//     s->top--;
+//     printf("popped item is %d",poppedItem);
+//     return poppedItem;
+// }
+// void display(struct stack *s)
+// {
+//     for (int i =s->top ; i<= 0 ; i-- )
+//     {
+//         printf("%d",s->arr[i]);
+//     }
+// }
