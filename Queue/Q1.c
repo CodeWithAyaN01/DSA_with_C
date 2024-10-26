@@ -6,16 +6,13 @@ int back = -1;
 int inQue(int elem)
 {
     Que[++back] = elem;
+    printf("Insterted - %d at pos %d\n",elem,back);
 }
-void DeQue()
+int DeQue()
 {
-    // int temp;
-    // for(int i = 0 ; i < point ; i++)
-    // {
-    //     Que[i] = Que[i+1];
-    // }
-    // point--;
     front++;
+    printf("Dequed - %d and Front is - %d\n",Que[front],front);
+    return Que[front];
 }
 int main()
 {    
@@ -26,6 +23,7 @@ int main()
     inQue(10);
     inQue(11);
     DeQue();
+    printf("The Que is--------------- \n");
     for (int i = front+1 ; i <= back ; i++)
     {
         printf("%d\t",Que[i]);
