@@ -4,12 +4,14 @@
 #define max 5
 char que[max];
 int rear=-1,front=0,count=0;
-void insert(char ele) {
+void insert(char elem) 
+{
     if(count==max)
         printf("\n Queue overflow");
-    else {
+    else 
+    {
         rear=(rear+1) % max;
-        que[rear]=ele;
+        que[rear]=elem;
         count++;
     }
 }
@@ -19,7 +21,7 @@ void del()
         printf("\n Queue underflow");
     else 
     {
-        printf("\n The deleted element is %c",cq[front]);
+        printf("\n The deleted element is %c",que[front]);
         front=(front+1)%max;
         count--;
     }
@@ -34,7 +36,7 @@ void display()
         i=front;
         for(c=1;c<=count;c++) 
         {
-            printf("%c\t",cq[i]);
+            printf("%c\t",que[i]);
             i=(i+1)%max;
         }
     }   
@@ -50,10 +52,13 @@ int main()
         switch(choice)
         {
             case 1: printf("\n Enter the element: ");
-            element=getche();
-            insert(element);break;
-            case 2: del();break;
-            case 3: display();break;
+                    element=getche();
+                    insert(element);
+                    break;
+            case 2: del();
+                    break;
+            case 3: display();
+                    break;
             case 4: return 0;
         }
     }

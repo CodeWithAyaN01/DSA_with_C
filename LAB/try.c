@@ -1,54 +1,61 @@
+// Circular Queue ;
 #include<stdio.h>
-#include<stdlib.h>
 #include<conio.h>
-int str[100] , pat[100] , rep[100] , ans[100];
-void read()
+#define max 5
+char que[max];
+int rear=-1,front=0,count=0;
+void insert(char elem)
 {
-    gets(str);
-    gets(pat);
-    gets(rep);
-}
-void pattern()
-{
-    int i,j,m,k,c;
-    int f = 0;
-    i=j=m=c = 0;
-    while (str[c] != '\0')
+    if (count == max)
     {
-        if (str[m] == pat[i])
-        {
-            i++;m++;
-            if (pat[i] == '\0')
-            {
-                printf("Pat founf at pos %d",c);
-                for (k = 0; rep[k] != '\0' ; k++,j++)
-                {
-                    ans[j] = rep[k];
-                }
-                f = 1;
-                i = 0;
-                c = m;
-            }
-        }
-        else
-        {
-            ans[j++] = str[c++];
-            i = 0;
-            m = c;
-        }
+        printf("Que overflow: ");
     }
-    ans[j] = '\0';
-    if (f == 0)
+    else
     {
-        printf("Patt not foud : ");
-    }else
+        rear = (rear+1) %max;
+        que[rear] = elem;
+        count++;
+    }
+}
+void del()
+{
+    if (count == 0)
     {
-        printf("pattern found at : %s",ans);
+        printf("Que underflwo: ");
+    }
+    else
+    {
+        printf("Deleted elem is %c",que[front]);
+        front = (front+1) % max;
+        count--;
+    }
+}
+void dis()
+{
+    int c,i;
+    printf("Que is \n");
+    i= front;
+    for (c = 1 ; c<=count ; c++)
+    {
+        printf("%c \t",que[i]);
+        i = (i+1)%max;
     }
 }
 void main()
 {
-    read();
-    pattern();
-    // getch();
+    int choose;
+    int element;
+    printf("'Enter choice\n'");
+     printf("\n Enter 1:insert\t Enter 2:delete\t Enter 3:display\t Enter 4:exit\t");
+    scanf("%d",&choose);
+    switch (choose)
+    {
+    case 1 : printf("ENter elem: ");
+            element = getche();
+            insert(element);
+        break;
+    
+    default:
+        break;
+    }
 }
