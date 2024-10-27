@@ -2,14 +2,14 @@
 #include<stdio.h>
 #include<conio.h>
 #define max 5
-char cq[max];
+char que[max];
 int rear=-1,front=0,count=0;
 void insert(char ele) {
     if(count==max)
         printf("\n Queue overflow");
     else {
         rear=(rear+1) % max;
-        cq[rear]=ele;
+        que[rear]=ele;
         count++;
     }
 }

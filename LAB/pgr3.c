@@ -3,14 +3,14 @@
 #include<conio.h>
 #include<ctype.h>
 char stk[100];
-int tos = -1;
+int top = -1;
 void push(char opr)
 {	
-	stk[++tos] = opr;
+	stk[++top] = opr;
 }	
 char pop()
 {	
-	return(stk[tos--]);
+	return(stk[top--]);
 }
 int preced(char opr)
 {	
@@ -26,26 +26,29 @@ void main()
 	printf("\nEnter valid INFIX expression\n");
 	scanf("%s",infix);
 	push('#');
+
 	for(i=0; infix[i]!='\0'; i++)
 	{	
 		if(infix[i]=='(')
-		push('(');
-		else if(isalnum(infix[i]))
+		    push('(');
+
+		else if (isalnum(infix[i]))
 			postfix[j++] = infix[i];
-		else if(infix[i]==')')
+    
+		else if (infix[i]==')')
 		{   
-			 while(stk[tos] != '(')
-			         postfix[j++] = pop();
+			 while(stk[top] != '(')
+			    postfix[j++] = pop();
 			pop();
 		}
         else
 		{        
-			while(preced(stk[tos]) >= preced(infix[i]))
+			while( preced(stk[top]) >= preced(infix[i]) )
 			       postfix[j++] = pop();
-			 push(infix[i]);
-		 }
-}
-while(stk[tos] != '#')
+			push(infix[i]);
+		}
+    }
+while(stk[top] != '#')
 	postfix[j++] = pop();
 postfix[j]='\0';
 printf("\n INFIX EXPRESSION = %s",infix);

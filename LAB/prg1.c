@@ -26,7 +26,7 @@ void pat_match()
             {
                 printf("\n pat: %s is found at position %d",pat,c);
                 for(k=0;rep[k]!='\0';k++,j++)
-                ans[j]=rep[k];
+                    ans[j]=rep[k];
                 i=0;
                 c=m;
                 flag=1;
@@ -34,9 +34,9 @@ void pat_match()
         }
         else//pattern mismatch
         {
-            ans[j]=str[c];
-            j++;
-            c++;
+            ans[j++]=str[c++];
+            // j++;
+            // c++;
             m=c;
             i=0;
         }
@@ -52,5 +52,5 @@ void main()
 // clrscr();
     read();
     pat_match();
-    getch();
+    // getch();
 }

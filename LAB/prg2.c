@@ -59,7 +59,7 @@ void palindrome()
 	}
 	num=0;
 	for(i=0;top!=-1;i++)
-		num=pop()*pow(10,i)+num;
+		num=pop()*(pow(10,i)+num);
 	
 	if(n==num)
 		printf("\nIt is a palindrome");
@@ -70,7 +70,7 @@ int main()
 {
 	int c,m;
 	while(1)
-	{	printf("\nEnter your choice\n1-push\n2-pop\n3-display\n4-palindrome");
+	{	printf("\nEnter your choice\n1-push\n2-pop\n3-display\n4-palindrome\t: ");
 		scanf("%d",&c);
 		switch(c)
 		{
