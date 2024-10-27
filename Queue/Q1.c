@@ -24,6 +24,7 @@ int main()
     inQue(3);
     inQue(5);
     inQue(7);
+    peek();
     DeQue();
     inQue(10);
     inQue(11);
