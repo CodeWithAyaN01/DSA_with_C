@@ -1,61 +1,26 @@
-// Circular Queue ;
 #include<stdio.h>
+#include<stdlib.h>
 #include<conio.h>
-#define max 5
-char que[max];
-int rear=-1,front=0,count=0;
-void insert(char elem)
+void tower(int num , char s , char t , char d)
 {
-    if (count == max)
+    if (num == 1)
     {
-        printf("Que overflow: ");
+        printf("\nMove disk 1 to %c to %c \n",s,d);
+        return;
     }
-    else
-    {
-        rear = (rear+1) %max;
-        que[rear] = elem;
-        count++;
-    }
+
+    tower(num-1 , s , t , d);
+    printf("Move disk %d from %c to %c",num,s,d);
+    tower(num-1 , t , d , s);
+    return;
 }
-void del()
+int main()
 {
-    if (count == 0)
-    {
-        printf("Que underflwo: ");
-    }
-    else
-    {
-        printf("Deleted elem is %c",que[front]);
-        front = (front+1) % max;
-        count--;
-    }
-}
-void dis()
-{
-    int c,i;
-    printf("Que is \n");
-    i= front;
-    for (c = 1 ; c<=count ; c++)
-    {
-        printf("%c \t",que[i]);
-        i = (i+1)%max;
-    }
-}
-void main()
-{
-    int choose;
-    int element;
-    printf("'Enter choice\n'");
-     printf("\n Enter 1:insert\t Enter 2:delete\t Enter 3:display\t Enter 4:exit\t");
-    scanf("%d",&choose);
-    switch (choose)
-    {
-    case 1 : printf("ENter elem: ");
-            element = getche();
-            insert(element);
-        break;
-    
-    default:
-        break;
-    }
+    printf("\nEnter the number of disk : ");
+    int num;
+    scanf("%d",&num);
+    printf("\nThe moves are involves are: ");
+    tower(num,'A','C','B');
+    getch();
+
 }
