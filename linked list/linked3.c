@@ -7,7 +7,9 @@ struct node
 };
 int main()
 {
+    struct node *head;
     struct node *list[5];
+    head = malloc(sizeof(struct node));
     for (int i = 0 ; i<5 ; i++)
     {
         list[i] = malloc(sizeof(struct node)); //  created multiple node 
