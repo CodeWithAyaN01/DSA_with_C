@@ -15,7 +15,7 @@ struct Patient
 }p;
 int main()
 {
-
+    Add_Patient();
 }
 void Add_Patient()
 {
