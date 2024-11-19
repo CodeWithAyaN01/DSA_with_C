@@ -15,6 +15,10 @@ struct Patient
 }p;
 int main()
 {
+    char p1Time[12];
+    Time(p1Time);
+    strcpy(p1Time,p.Patient_Date);
+    printf("The Time is %s ",p.Patient_Date ); // here function is working Properly ;
     Add_Patient();
 }
 void Add_Patient()
