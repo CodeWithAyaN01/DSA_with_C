@@ -1,30 +1,46 @@
 #include<stdio.h>
 #include<stdlib.h>
-struct Node{ // liked list Structure Defination. 
+#include<windows.h>
+
+struct node
+{
     int data;
-    struct Node* next;
+    struct node* next;
 };
-
-struct Node* Create_Node(int value) // return type is struct Node*
+struct node* CreatNode(int data)
 {
-    struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
-    new_node->data = value;
-    new_node->next = NULL; // Nest node value is NULL
-    return new_node;
+    struct node *NewNode = (struct node*)malloc(sizeof(struct node));
+    NewNode->data = data;
+    NewNode->next = NULL;
+    return NewNode;
 }
-
-struct Node* Add_Node(struct Node** head,int data)
+void InsertAtBeg(struct node ** head,int data)
 {
-    struct Node* new_node = Create_Node(data);
-    if (head == NULL)
+    struct node * NewNode = CreatNode(data);
+    NewNode->data = data;
+    NewNode->next = *head;
+    *head = NewNode; // updating head to the next new node
+}
+void insertAtEnd(struct node ** head , int data) //  head stores the adders of the 
+{
+    struct node * NewNode = CreatNode(data);
+    NewNode->data = data;
+    NewNode->next = NULL;
+
+    if (*head == NULL)
     {
-        *head = new_node;
-        return;
+        *head = NewNode; // list empty condition 
     }
-    struct Node* temp = *head;
-    while (temp->next != NULL)
+    struct node * temp = *head;
+    while(temp->next != NULL)
     {
         temp = temp->next;
     }
-    ;temp->next = new_node;
+    temp->next = NewNode; // connecting to the last node !
+
+}
+int main()
+{
+    struct node * head = NULL;
+    
 }
