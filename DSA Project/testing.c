@@ -44,11 +44,11 @@ void DisplayQue()
     }
     else
     {
-        printf("\nThe Present Que is\n");
+        printf("\nThe Present Que is\n\n\n\n\n");
         for (int i = front ; i<= rear ; i++)
         {
-            Sleep(100);
-            printf("\t\t\t\t%d\t\t\t\t\n",Queue[i]);
+            Sleep(150);
+            printf("\t\t\t\t\t\t\t\t\t\t%d\t\t\t\t\n",Queue[i]);
         }
     }
 }
@@ -119,5 +119,6 @@ int main()
     {
         EnQueue(i+1);
     }
+    printf("<==============Counter1===============>\t\t\t\t<==============Counter2===============>\t\t\t\t<==============Counter3===============>\n\n");
     DisplayQue();
 }
