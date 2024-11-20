@@ -47,6 +47,7 @@ void DisplayQue()
         printf("\nThe Present Que is\n");
         for (int i = front ; i<= rear ; i++)
         {
+            Sleep(100);
             printf("\t\t\t\t%d\t\t\t\t\n",Queue[i]);
         }
     }
