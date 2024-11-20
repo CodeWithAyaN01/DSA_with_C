@@ -1,206 +1,122 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<time.h>
-
-struct patient{
-    int id;
-    char patientName[50];
-    char patientAddress[50];
-    char disease[50];
-    char date[12];
-}p;
-
-struct doctor{
-    int id;
-    char name[50];
-    char address[50];
-    char specialize[50];
-    char date[12];
-}d;
-
-FILE *fp;
-
-int main(){
-
-    int ch;
-
-    while(1){
-        system("cls");
-        printf("<== Hospital Management System ==>\n");
-        printf("1.Admit Patient\n");
-        printf("2.Patient List\n");
-        printf("3.Discharge Patient\n");
-        printf("4.Add Doctor\n");
-        printf("5.Doctors List\n");
-        printf("0.Exit\n\n");
-        printf("Enter your choice: ");
-        scanf("%d", &ch);
-
-        switch(ch){
-        case 0:
-            exit(0);
-
-        case 1:
-            admitPatient();
-            break;
-
-        case 2:
-            patientList();
-            break;
-
-        case 3:
-            dischargePatient();
-            break;
-
-        case 4:
-            addDoctor();
-            break;
-
-        case 5:
-            doctorList();
-            break;
-
-        default:
-            printf("Invalid Choice...\n\n");
-
+#include<windows.h>
+#define max_size 100
+void Assign_ppl_to_counters(); // work on
+int C1_sleep = 1, C2_sleep =1, C3_sleep = 1;
+int Queue[max_size];
+int front = -1 , rear = -1;
+void EnQueue(int data) // inserting a value from read
+{   
+    if (rear == max_size - 1) // full->Condition
+    {
+        printf("Queue is Full\n");
+    }
+    else
+    {
+        if(front == -1) // Setting Front to 0 if Front == -1;
+        {
+          front = 0;
         }
-        printf("\n\nPress Any Key To Continue...");
-        getch();
+        Queue[++rear] = data;
     }
-
-    return 0;
 }
-
-void admitPatient(){
-    char myDate[12];
-    time_t t = time(NULL);
-    struct tm tm = *localtime(&t);
-    sprintf(myDate, "%02d/%02d/%d", tm.tm_mday, tm.tm_mon+1, tm.tm_year + 1900);
-    strcpy(p.date, myDate);
-
-    fp = fopen("patient.txt", "ab");
-
-    printf("Enter Patient id: ");
-    scanf("%d", &p.id);
-
-    printf("Enter Patient name: ");
-    fflush(stdin);
-    gets(p.patientName);
-
-    printf("Enter Patient Address: ");
-    fflush(stdin);
-    gets(p.patientAddress);
-
-    printf("Enter Patient Disease: ");
-    fflush(stdin);
-    gets(p.disease);
-
-    printf("\nPatient Added Successfully");
-
-    fwrite(&p, sizeof(p), 1, fp);
-    fclose(fp);
-}
-
-void patientList(){
-
-    system("cls");
-    printf("<== Patient List ==>\n\n");
-    printf("%-10s %-30s %-30s %-20s %s\n", "Id", "Patient Name", "Address", "Disease", "Date");
-    printf("----------------------------------------------------------------------------------------------------------\n");
-
-    fp = fopen("patient.txt", "rb");
-    while(fread(&p, sizeof(p), 1, fp) == 1){
-        printf("%-10d %-30s %-30s %-20s %s\n", p.id, p.patientName, p.patientAddress, p.disease, p.date);
+void Dequeue() // removing the element .
+{
+    if (front == -1)
+    {
+        printf("The Queue is Empty Cannot Dequeue\n");
     }
-
-    fclose(fp);
-}
-
-
-void dischargePatient(){
-    int id, f=0;
-    system("cls");
-    printf("<== Discharge Patient ==>\n\n");
-    printf("Enter Patient id to discharge: ");
-    scanf("%d", &id);
-
-    FILE *ft;
-
-    fp = fopen("patient.txt", "rb");
-    ft = fopen("temp.txt", "wb");
-
-    while(fread(&p, sizeof(p), 1, fp) == 1){
-
-        if(id == p.id){
-            f=1;
-        }else{
-            fwrite(&p, sizeof(p), 1, ft);
+    else
+    {
+        printf("Dequed Element : %d ",Queue[front]);
+        front++; // increasing the front to Dequeue.
+        if (front > rear) // resetting if front and rear if Queus is full
+        {
+            front = rear = -1;
         }
     }
-
-    if(f==1){
-        printf("\n\nPatient Discharged Successfully.");
-    }else{
-        printf("\n\nRecord Not Found !");
-    }
-
-    fclose(fp);
-    fclose(ft);
-
-    remove("patient.txt");
-    rename("temp.txt", "patient.txt");
-
 }
-
-void addDoctor(){
-
-    char myDate[12];
-    time_t t = time(NULL);
-    struct tm tm = *localtime(&t);
-    sprintf(myDate, "%02d/%02d/%d", tm.tm_mday, tm.tm_mon+1, tm.tm_year + 1900);
-    strcpy(d.date, myDate);
-
-    int f=0;
-
-    system("cls");
-    printf("<== Add Doctor ==>\n\n");
-
-    fp = fopen("doctor.txt", "ab");
-
-    printf("Enter Doctor id: ");
-    scanf("%d", &d.id);
-
-    printf("Enter Doctor Name: ");
-    fflush(stdin);
-    gets(d.name);
-
-    printf("Enter Doctor Address: ");
-    fflush(stdin);
-    gets(d.address);
-
-    printf("Doctor Specialize in: ");
-    fflush(stdin);
-    gets(d.specialize);
-
-    printf("Doctor Added Successfully\n\n");
-
-    fwrite(&d, sizeof(d), 1, fp);
-    fclose(fp);
-}
-
-
-
-void doctorList(){
-    system("cls");
-    printf("<== Doctor List ==>\n\n");
-
-    printf("%-10s %-30s %-30s %-30s %s\n", "id", "Name", "Address", "Specialize","Date");
-    printf("-------------------------------------------------------------------------------------------------------------------\n");
-
-    fp = fopen("doctor.txt", "rb");
-    while(fread(&d, sizeof(d), 1, fp) == 1){
-        printf("%-10d %-30s %-30s %-30s %s\n", d.id, d.name, d.address, d.specialize, d.date);
+void DisplayQue()
+{
+    if (front == -1){
+        printf("The Queue is Empty : ");
     }
+    else
+    {
+        printf("\nThe Present Que is\n");
+        for (int i = front ; i<= rear ; i++)
+        {
+            printf("\t\t\t\t%d\t\t\t\t\n",Queue[i]);
+        }
+    }
+}
+struct node
+{
+    int data;
+    struct node* next;
+};
+struct node* CreatNode(int data)
+{
+    struct node *NewNode = (struct node*)malloc(sizeof(struct node));
+    NewNode->data = data;
+    NewNode->next = NULL;
+    return NewNode;
+}
+void InsertAtBeg(struct node ** head,int data)
+{
+    struct node * NewNode = CreatNode(data);
+    NewNode->data = data;
+    NewNode->next = *head;
+    *head = NewNode; // updating head to the next new node
+}
+void insertAtEnd(struct node ** head , int data) //  head stores the adders of the 
+{
+    struct node * NewNode = CreatNode(data);
+    NewNode->data = data;
+    NewNode->next = NULL;
 
-    fclose(fp);
+    if (*head == NULL)
+    {
+        *head = NewNode; // list empty condition 
+    }
+    struct node * temp = *head;
+    while(temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+    temp->next = NewNode; // connecting to the last node !
+    NewNode->next = *head; // points to the head !
+
+} 
+// Sleep Timing for all Counters
+void counter_1()
+{
+    C1_sleep = 1;
+    Sleep(500);
+    C1_sleep = 0;
+}
+void counter_2()
+{
+    C2_sleep = 1;
+    Sleep(1000);
+    C2_sleep = 0;
+}
+void counter_3()
+{
+    C3_sleep = 1;
+    Sleep(1300);
+    C3_sleep = 0;
+}
+int main()
+{
+    struct node * head = NULL;
+    int person;
+    printf("\nEnter the number of Person in Queue: ");
+    scanf("%d",&person);
+    for(int i = 0 ; i < person ; i++) // taking person in Queue
+    {
+        EnQueue(i+1);
+    }
+    DisplayQue();
 }
