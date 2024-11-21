@@ -81,7 +81,7 @@ void DisplayDeQueue()
     DisplayQue();
     for (int i = front ; i < rear ; i++)
     {
-        Sleep(300);
+        Sleep(400);
         Dequeue();
         system("cls");
         DisplayQue();
