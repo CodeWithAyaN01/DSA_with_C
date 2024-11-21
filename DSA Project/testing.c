@@ -61,7 +61,7 @@ void DisplayQue()
         printf("\nThe Present Que is\n\n\n\n\n");
         for (int i = front ; i<= rear ; i++)
         {
-            Sleep(150);
+            // Sleep(150);
             printf("\t\t\t\t\t\t\t\t\t\t%d\t\t\t\t\n",Queue[i]);
         }
     }
@@ -81,7 +81,7 @@ void DisplayDeQueue()
     DisplayQue();
     for (int i = front ; i < rear ; i++)
     {
-        // Sleep(150);
+        Sleep(300);
         Dequeue();
         system("cls");
         DisplayQue();
