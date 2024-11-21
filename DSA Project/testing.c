@@ -6,6 +6,20 @@ void Assign_ppl_to_counters(); // work on
 int C1_sleep = 1, C2_sleep =1, C3_sleep = 1;
 int Queue[max_size];
 int front = -1 , rear = -1;
+int RandomNum() 
+{
+    srand((unsigned int)time(NULL)); 
+    
+    int randomValue;
+
+    if ((rand() % 100) < 90) {
+        randomValue = 91 + (rand() % (150 - 91 + 1)); 
+    } else {
+        randomValue = 21 + (rand() % (90 - 21 + 1)); 
+    }
+
+    return randomValue;
+}
 void EnQueue(int data) // inserting a value from read
 {   
     if (rear == max_size - 1) // full->Condition
@@ -114,19 +128,19 @@ void insertAtEnd(struct node ** head , int data) //  head stores the adders of t
 void counter_1()
 {
     C1_sleep = 1;
-    Sleep(500);
+    Sleep(RandomNum());
     C1_sleep = 0;
 }
 void counter_2()
 {
     C2_sleep = 1;
-    Sleep(1000);
+    Sleep(RandomNum());
     C2_sleep = 0;
 }
 void counter_3()
 {
     C3_sleep = 1;
-    Sleep(1300);
+    Sleep(RandomNum());
     C3_sleep = 0;
 }
 int main()
