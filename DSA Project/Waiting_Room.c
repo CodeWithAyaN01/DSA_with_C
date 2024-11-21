@@ -50,6 +50,16 @@ void DisplayQue()
         }
     }
 }
+void No_of_Person()
+{
+    int person;
+    printf("\nEnter the number of Person in Queue: ");
+    scanf("%d",&person);
+    for(int i = 0 ; i < person ; i++) // taking person in Queue
+    {
+        EnQueue(i+1);
+    }
+}
 struct node
 {
     int data;
@@ -110,13 +120,7 @@ void counter_3()
 int main()
 {
     struct node * head = NULL;
-    int person;
-    printf("\nEnter the number of Person in Queue: ");
-    scanf("%d",&person);
-    for(int i = 0 ; i < person ; i++) // taking person in Queue
-    {
-        EnQueue(i+1);
-    }
+    No_of_Person();
     printf("<==============Counter1===============>\t\t\t\t<==============Counter2===============>\t\t\t\t<==============Counter3===============>\n\n");
     DisplayQue();
 }

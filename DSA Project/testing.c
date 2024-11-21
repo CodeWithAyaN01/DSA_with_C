@@ -15,22 +15,21 @@ void EnQueue(int data) // inserting a value from read
     else
     {
         if(front == -1) // Setting Front to 0 if Front == -1;
-        {
-          front = 0;
-        }
+            front = 0;
         Queue[++rear] = data;
     }
 }
 void Dequeue() // removing the element .
 {
-    if (front == -1)
+    if (front == -1 || front > rear)
     {
         printf("The Queue is Empty Cannot Dequeue\n");
     }
     else
     {
-        printf("Dequed Element : %d ",Queue[front]);
+        // printf("Dequed Element : %d ",Queue[front]);
         front++; // increasing the front to Dequeue.
+        printf("\t\t\t\t\t\t\t\t\t\t%d\t\t\t\t\n",Queue[front]);
         if (front > rear) // resetting if front and rear if Queus is full
         {
             front = rear = -1;
@@ -50,6 +49,27 @@ void DisplayQue()
             Sleep(150);
             printf("\t\t\t\t\t\t\t\t\t\t%d\t\t\t\t\n",Queue[i]);
         }
+    }
+}
+void No_of_Person()
+{
+    int person;
+    printf("\nEnter the number of Person in Queue: ");
+    scanf("%d",&person);
+    for(int i = 0 ; i < person ; i++) // taking person in Queue
+    {
+        EnQueue(i+1);
+    }
+}
+void DisplayDeQueue()
+{
+    DisplayQue();
+    for (int i = front ; i < rear ; i++)
+    {
+        // Sleep(150);
+        Dequeue();
+        system("cls");
+        DisplayQue();
     }
 }
 struct node
@@ -112,13 +132,8 @@ void counter_3()
 int main()
 {
     struct node * head = NULL;
-    int person;
-    printf("\nEnter the number of Person in Queue: ");
-    scanf("%d",&person);
-    for(int i = 0 ; i < person ; i++) // taking person in Queue
-    {
-        EnQueue(i+1);
-    }
+    No_of_Person();
     printf("<==============Counter1===============>\t\t\t\t<==============Counter2===============>\t\t\t\t<==============Counter3===============>\n\n");
-    DisplayQue();
+    // DisplayQue();
+    DisplayDeQueue();
 }
