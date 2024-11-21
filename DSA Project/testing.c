@@ -1,12 +1,13 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<windows.h>
+#include<time.h>
 #define max_size 100
 void Assign_ppl_to_counters(); // work on
 int C1_sleep = 1, C2_sleep =1, C3_sleep = 1;
 int Queue[max_size];
 int front = -1 , rear = -1;
-int RandomNum() 
+int RandomNum()  // for generating Random number bt 20 - 150; 
 {
     srand((unsigned int)time(NULL)); 
     
