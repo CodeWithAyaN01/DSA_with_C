@@ -81,15 +81,17 @@ void DisplayDeQueue()
     DisplayQue();
     for (int i = front ; i < rear ; i++)
     {
-        Sleep(400);
+        Sleep(1000);
         Dequeue();
         system("cls");
+        printf("<==============Counter1===============>\t\t\t\t<==============Counter2===============>\t\t\t\t<==============Counter3===============>\n\n");
         DisplayQue();
     }
 }
 struct node
 {
     int data;
+    int Personserved;
     struct node* next;
 };
 struct node* CreatNode(int data)
@@ -124,7 +126,18 @@ void insertAtEnd(struct node ** head , int data) //  head stores the adders of t
     temp->next = NewNode; // connecting to the last node !
     NewNode->next = *head; // points to the head !
 
-} 
+}
+
+void Traversing(struct node* head) // Wrong
+{
+    struct node * temp = head;
+    while (temp != NULL)
+    {
+        temp = temp->next;
+    }
+    temp->next = head;
+}
+
 // Sleep Timing for all Counters
 void counter_1()
 {
@@ -144,11 +157,19 @@ void counter_3()
     Sleep(RandomNum());
     C3_sleep = 0;
 }
-int main()
+void Person()
 {
     struct node * head = NULL;
+    insertAtEnd(&head,1);
+    insertAtEnd(&head,2);
+    insertAtEnd(&head,3);
+
+}
+int main()
+{
+    
+    Person();
     No_of_Person();
-    printf("<==============Counter1===============>\t\t\t\t<==============Counter2===============>\t\t\t\t<==============Counter3===============>\n\n");
-    // DisplayQue();
-    DisplayDeQueue();
+
+
 }
