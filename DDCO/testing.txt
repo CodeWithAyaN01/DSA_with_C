@@ -1,8 +1,17 @@
-module srff(s,r,q,qbar,clk)
-    input s,r,clk;
+moduel jkff(j,k,q,qbar,clk)
+    input j,k,clk;
     output q,qbar;
-    nand(x,clk,s);
-    nand(y,clk,r);
-    nand(q,x,qbar);
-    nand(qbar,y,q);
+    reg temp;
+    always@(posedge clk)
+        begin
+            case({j,k})
+            2'b01:temp = 1'b0;
+            2'b10:temp = 1'b1;
+            2'b11:temp =~temp;
+            2'b00:temp = temp;
+            default:temp<=1'bz;
+            endcase
+        end
+    assign q = temp;
+    assign qbar = ~temp;
 endmodule

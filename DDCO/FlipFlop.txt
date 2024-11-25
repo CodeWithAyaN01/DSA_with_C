@@ -20,16 +20,13 @@ endmodule
 
 
 module jkff (clk, j, k, q, qb); 
-    input clk; 
-    input j; 
-    input k; 
-    output q; 
-    output qb; 
+    input clk,j,k; 
+    output q,qb;  
     reg temp; 
-    always@( posedge clk) 
+    always@(posedge clk) 
         begin 
         case({j,k}) 
-            2'b01:temp=1’b0; 
+            2'b01:temp=1'b0; 
             2'b10:temp=1’b1; 
             2'b11:temp=~temp; 
             2'b00:temp=temp; 
