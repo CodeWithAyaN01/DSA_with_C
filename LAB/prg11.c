@@ -14,7 +14,6 @@ void DFS(int s)
         DFS(i);
     }
 }
-
 int main() 
 {
     int i,s,j;
