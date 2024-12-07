@@ -24,7 +24,7 @@ Explanation: In this case, no transactions are done and the max profit = 0
 int max = 0;
 int main()
 {
-    int price[] = {7,4,5,3,6,1};
+    int price[] = {7,6,4,3,1};
     int pricesize = sizeof(price) / sizeof(price[0]);;
     int price1[pricesize];
     // int index[10];
@@ -57,7 +57,7 @@ int main()
     }
     if (price1[0] == price[pricesize-1])
     {
-        printf("return function");
+        printf("Dont buy Stock");
         return 0;
     }
     // foe selling day 
