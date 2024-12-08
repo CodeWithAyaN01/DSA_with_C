@@ -19,7 +19,7 @@ node* create()
 	newnode=(node*)malloc(sizeof(node));
 	printf("Enter the polynomial term(coeff, power of x, y, z):");
 	scanf("%d%d%d%d",&newnode->cf,&newnode->px,&newnode->py,&newnode->pz);
-	newnode->used=0;
+	newnode->used=0; //  ???
 	newnode->next=NULL;
 	return newnode;
 }
@@ -32,11 +32,11 @@ void insert_front(node* head)
 }
 void read_poly(node *head)
 {
-	int n,i;
+	int n;
 	printf("Enter the no. of terms in polynomial:");
 	scanf("%d",&n);
-	for(i=0;i<n;i++)
-	insert_front(head);
+	for(int i=0;i<n;i++)
+		insert_front(head);
 }
 void display(node *head)
 {

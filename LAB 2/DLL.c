@@ -77,7 +77,7 @@ void insert_end()
 		while(temp->next!=NULL)
 			temp=temp->next;
 		temp->next=nn;
-	nn->prev=temp; //  different
+	    nn->prev=temp; //  different
 	}
 }
 void delete_end()
@@ -94,7 +94,7 @@ void delete_end()
 	{	
 		while(temp->next != NULL)
 			temp=temp->next;
-		(temp->prev)->next=NULL;
+		(temp->prev)->next=NULL; // systumm
 		free(temp);
 	}
 }
