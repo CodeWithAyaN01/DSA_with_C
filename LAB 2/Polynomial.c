@@ -43,8 +43,8 @@ void display(node *head)
  	node *temp = head->next;
  	while(temp!= head)
  	{
-		printf(" %+dx^%dy^%dz^%d",temp->cf,temp->px,temp->py,temp->pz);
-		temp=temp->next;
+		printf(" %dx^%dy^%dz^%d",temp->cf,temp->px,temp->py,temp->pz);
+		temp=temp->next; // increament 
  	}
 }
 void add_poly(node* h1, node* h2, node* h3)

@@ -1,118 +1,42 @@
 #include<stdio.h>
-#include<stdlib.h>
-struct DLL 
+int a[10][10] , visit[10] , n;
+void DFS(int s)
 {
-    int data;
-    struct DLL *next,*prev;
-};
-typedef struct DLL Node;
-Node *start = NULL;
-Node *CreateNode()
+    int i;
+    visit[s] = 1;
+    for(i = 1 ; i<=n ; i++)
+    {
+        if ((a[s][i] == 0) && (visit[i]== 0))
+            DFS(i);
+    }
+} 
+int main()
 {
-    Node *NewNode;
-    NewNode = malloc(sizeof(Node *));
-    if (NewNode == NULL)
-        printf("Memory Overflow");
-    printf("GIve gata");
-    scanf("%d",NewNode->data);
-    NewNode->next=NULL;
-    NewNode->prev=NULL;
-    return NewNode;
-}
+    int s,j,i;
 
-void insertfront()
-{
-    Node *nn;
-    nn = CreateNode();
-    if(start==NULL)
-    {
-        start = nn;
-    }
-    else
-    {
-        nn->next = start;
-        start->prev = nn;
-        start = nn;
-    }
-}
+    printf("Enter the number of  Vertices");
+    scanf("%d",&n);
 
-void deleteFront()
-{
-    Node *temp = start;
-    if (start == NULL)
+    printf("Enter thr matrix\n");
+    for (i = 1 ;i<=n;i++)
     {
-        printf("Empty");
-    }
-    else if(start->next == NULL)
-    {
-        start = NULL;
-        free(temp);
-    }
-    else
-    {
-        start = start->next;
-        start->prev = NULL;
-        free(temp);
-        
-    }
-}
-
-void insertEnd()
-{
-    Node *nn;
-    Node *temp = start;
-    if(start == NULL)
-    {
-        start = nn;
-    }
-    else
-    {
-        while (temp->next != NULL)
+        for (j = 1 ; j<=n;j++)
         {
-            temp = temp->next;
+            scanf("%d",&a[i][j]);
         }
-        temp->next = nn;
-        nn->prev = temp;
     }
-}
 
-void deleteEnd()
-{
-    Node *temp = start;
-    if (start == NULL)
-        printf("Empty");
-    else if (start->next == NULL)
-    {
-        start = NULL;
-    }
-    else
-    {
-        while (temp->next != NULL)
-        {
-            temp = temp->next;
-        }
-        (temp->prev)->next = NULL;
-        free(temp);
-    }
-}
+    printf("Enter the source nodee");
+    scanf("%d",&s);
+    DFS(s);
 
-void Traverse()
-{
-    int c = 0;
-    Node *temp = start;\
-    if (start == NULL)
+    printf("The Node reachable form  %d are\n",s);
+    for (i = 1 ; i<=n ; i++)
     {
-        printf("Empty");
-    }
-    else
-    {
-        printf("The details Are");
-        while (temp != NULL)
+        if (visit[i] == 1 && i!=s)
         {
-            printf("print details: ");
-            temp = temp->next;
-            c++;
+            printf("%d\t",i);
         }
-        printf("\n Number of nodes is %d",c);
     }
+    return 0;
 }

@@ -77,6 +77,7 @@ void insert_end()
 		while(temp->next!=NULL)
 			temp=temp->next;
 		temp->next=nn;
+        
 	    nn->prev=temp; //  different
 	}
 }
