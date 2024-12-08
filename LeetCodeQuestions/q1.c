@@ -60,7 +60,6 @@ int main()
     // foe selling day 
     for (int j = BuyIndex ;j < pricesize ; j++ ) //int price[] = {10,1,3,4,11,8};
     {
-        // int max = 0;
         if ((price[j+1] > price[j+2]) && price[j+1] > max)
         {
             max = price[j+1];
