@@ -24,7 +24,7 @@ Explanation: In this case, no transactions are done and the max profit = 0
 int max = 0;
 int main()
 {
-    int price[] = {7,6,4,3,1};
+    int price[] = {7,1,6,6,3}; // starting from 0th day
     int pricesize = sizeof(price) / sizeof(price[0]);;
     int price1[pricesize];
     // int index[10];
@@ -61,17 +61,15 @@ int main()
         return 0;
     }
     // foe selling day 
-
-    for (int j = BuyIndex ;j < pricesize ; j++ )
+    for (int j = BuyIndex ;j < pricesize ; j++ ) //int price[] = {10,1,3,4,11,8};
     {
         // int max = 0;
-        if (price[j+1] > price[j+2])
+        if ((price[j+1] > price[j+2]) && price[j+1] > max)
         {
             max = price[j+1];
         }
     }
     // for sell index;
-
     for (int i = 0 ; i<pricesize ; i++)
     {
         if (price[i] == max)
@@ -80,10 +78,8 @@ int main()
         }
     }   
 
-    printf("byu at %d at %dth day\n",price[BuyIndex],BuyIndex);
-    printf("sell at %d at %dth day\n",price[sellIndex],sellIndex);
-
-
-
-
+    printf("Byu at Rs.%d at %dth day\n",price[BuyIndex],BuyIndex);
+    printf("Sell at RS.%d at %dth day\n",price[sellIndex],sellIndex);
+    int profit = price[sellIndex] - price[BuyIndex];
+    printf("The Total Profit is : Rs %d",profit);
 }
