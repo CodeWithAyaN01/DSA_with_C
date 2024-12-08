@@ -29,7 +29,7 @@ Node *create()
 		printf("Memory overflow");
 	else
 	{
-		printf("\n Enter USN, name, branch, sem, phone number\n");
+		printf("\n Enter USN, name, branch, sem, phone number");
 		scanf("%s%s%s%d%s",newNode->usn,newNode->name,newNode->branch,&newNode->sem,newNode->phno);
 		newNode->next=NULL;
 		return newNode;
@@ -114,7 +114,7 @@ int main()
 	int n,m,i;
 	while(1)
 	{
-		printf("\n Enter your choice \n1:insert_front\n 2:insert_end\n 3:delete_front\n 4:delete_end\n5:display");
+		printf("\n Enter your choice \n1:insert_front\n 2:insert_end\n 3:delete_front\n 4:delete_end\n5:display\n\n");
 		scanf("%d",&m);
 		switch(m)
 		{

@@ -19,7 +19,7 @@ struct DList
 	struct DList *prev,*next;
 };
 typedef struct DList dnode;
-dnode *start=NULL;
+dnode *start= NULL;
 dnode *create()
 {
 	dnode *newnode;
@@ -33,7 +33,7 @@ dnode *create()
 		newnode->prev=NULL;
 		newnode->next=NULL;
 	}
-return newnode;
+    return newnode;
 }
 void insert_front()
 {
@@ -61,7 +61,7 @@ void delete_front()
 	else
 	{
 		start=start->next;
-		start->prev=NULL;
+		start->prev=NULL; // [ NULL | Data | next1 ] ->  <-[ next1 | Data | next2 ]
 		free(temp);
 	}
 }
@@ -77,7 +77,7 @@ void insert_end()
 		while(temp->next!=NULL)
 			temp=temp->next;
 		temp->next=nn;
-	nn->prev=temp;
+	nn->prev=temp; //  different
 	}
 }
 void delete_end()
