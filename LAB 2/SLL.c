@@ -10,21 +10,23 @@ e. Exit*/
 #include<stdlib.h>
 struct SLL
 {
-char usn[11];
-char name[30];
-char branch[4];
-int sem;
-char phno[11];
-struct SLL *next;
+	char usn[11];
+	char name[30];
+	char branch[4];
+	int sem;
+	char phno[11];
+	struct SLL *next; // pointer
 };
 typedef struct SLL Node;
 Node *start=NULL;
+
+// creating function
 Node *create()
 {
 	Node *newNode;
-	newNode=(Node*)malloc(sizeof(Node));
+	newNode = (Node*)malloc(sizeof(Node)); // memory allocation
 	if(newNode==NULL)
-	printf("Memory overflow");
+		printf("Memory overflow");
 	else
 	{
 		printf("\n Enter USN, name, branch, sem, phone number\n");
@@ -37,14 +39,14 @@ void insert_front()
 {
 	Node *newnode;
 	newnode=create();
-	newnode->next=start;
-	start=newnode;
+	newnode->next=start; // the node pointes to the start of the LL
+	start=newnode; // updating the list to the start ;
 }
 void delete_front()
 {
 	Node *temp;
 	if(start==NULL)
-	printf("\n List is empty");
+		printf("\n List is empty");
 	else 
 	{
 		temp=start;
@@ -54,16 +56,16 @@ void delete_front()
 }
 void insert_end() 
 {
-	Node *nn,*temp;
-	nn=create();
+	Node *NewNode,*temp;
+	NewNode=create();
 	if(start==NULL)
-		start=nn;
+		start=NewNode;
 	else 
 	{
 		temp=start;
 		while(temp->next!=NULL)
 			temp=temp->next;
-		temp->next=nn;
+		temp->next=NewNode;
 	}
 }
 void delete_end() 
@@ -76,6 +78,7 @@ void delete_end()
 	}
 	if(start->next==NULL)
 		start=NULL;
+
 	else 
 	{
 		while(temp->next!=NULL)
@@ -89,7 +92,7 @@ void delete_end()
 }
 void display()
 {
-	int c=0;
+	int c = 0; //  to calculate number of nodes !
 	Node *temp;
 	if(start==NULL)
 		printf("\n Empty list");
@@ -100,7 +103,7 @@ void display()
 		while(temp!=NULL)
 		{
 			printf("\n%s\t%s\t%s\t%d\t%s\t",temp->usn,temp->name,temp->branch,temp->sem,temp->phno);
-			c++;
+			c++; // increasing the number of nodes
 			temp=temp->next;
 		}
 		printf("\n Number of nodes is %d",c);
@@ -124,7 +127,7 @@ int main()
 			case 3: delete_front();break;
 			case 4: delete_end();break;
 			case 5: display();break;
-			default:return 0;
+			default: return 0;
 		}
 	}
 }
