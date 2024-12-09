@@ -8,7 +8,7 @@ d. Exit*/
 #include<stdlib.h>
 struct Tree 
 {
-	int info;
+	int data;
 	struct Tree *left,*right;
 };
 typedef struct Tree tnode;
@@ -18,7 +18,7 @@ tnode* getnode()
 	tnode *newnode;
 	newnode=(tnode*)malloc(sizeof(tnode));
 	printf("\n Enter the value");
-	scanf("%d",&newnode->info);
+	scanf("%d",&newnode->data);
 	newnode->left=newnode->right=NULL;
 	return(newnode);
 }
@@ -33,23 +33,23 @@ void insert()
 		while(temp!=NULL) 
 		{
 			prev=temp;
-			if(nn->info < temp->info)
+			if(nn->data < temp->data)
 				temp=temp->left;
 			else
 				temp=temp->right;
 		}
-		if(nn->info < prev->info)
+		if(nn->data < prev->data)
 			prev->left=nn;
 		else
 			prev->right=nn;
-	}
+	}	
 }
 void inorder(tnode *root) 
 {
 	if(root!=NULL) 
 	{
 		inorder(root->left);
-		printf("%d\t",root->info);
+		printf("%d\t",root->data);
 		inorder(root->right);
 	}
 }
@@ -57,7 +57,7 @@ void preorder(tnode *root)
 {
 	if(root!=NULL) 
 	{
-		printf("%d\t",root->info);
+		printf("%d\t",root->data);
 		preorder(root->left);
 		preorder(root->right);
 	}
@@ -68,7 +68,7 @@ void postorder(tnode *root)
 	{
 		postorder(root->left);
 		postorder(root->right);
-		printf("%d\t",root->info);
+		printf("%d\t",root->data);
 	}
 }
 int search(int key) 
@@ -76,9 +76,9 @@ int search(int key)
 	tnode *temp=root;
 	while(temp!=NULL)
 	{
-		if(key==temp->info)
+		if(key==temp->data)
 			return 1;
-		else if(key<temp->info)
+		else if(key<temp->data)
 			temp=temp->left;
 		else
 			temp=temp->right;
@@ -93,7 +93,7 @@ void display(tnode *root,int height)
 		display(root->right,height+1);
 		for(i=0;i<height;i++)
 			printf("\t");
-		printf("%d\n",root->info);
+		printf("%d\n",root->data);
 		display(root->left,height+1);
 	}
 }

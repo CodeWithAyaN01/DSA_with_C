@@ -8,14 +8,14 @@ the address space L. Resolve the collision (if any) using linear probing.*/
 #include<stdio.h>
 #include<stdlib.h>
 int L[100],max=10;
-float A = 0.1352;
+// float A = 0.1352;
 void display()
 {
     int i;
     printf("\n Hash table contents are ");
     printf("\n Index\tdata\n");
     for(i=0;i<max;i++)
-    printf("\n%d\t%d\n",i,L[i]);
+        printf("\n%d\t%d\n",i,L[i]);
 }
 void linear_probe(int addr,int num)
 {
@@ -25,6 +25,7 @@ void linear_probe(int addr,int num)
     else
     {
         printf("\n Collision detected");
+
         i=(addr+1)%max;
         while(i!=addr)
         {
@@ -55,6 +56,7 @@ int main()
         printf("%d, %d",num, addr);
         linear_probe(addr,num);
         display();
+        
         printf("\n Enter 1 to continue");
         scanf("%d",&input);
     }while(input==1);
