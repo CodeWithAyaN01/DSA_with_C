@@ -60,3 +60,24 @@ node *Delete(node *root , int data)
         return(temp);
     }
 }
+node* FindMin(node* root) {
+    if (root == NULL) {
+        printf("The tree is empty.\n");
+        return NULL;
+    }
+    while (root->left != NULL) {  // Keep traversing to the leftmost node
+        root = root->left;
+    }
+    return root;  // Return the leftmost node
+}
+
+node* FindMax(node* root) {
+    if (root == NULL) {
+        printf("The tree is empty.\n");
+        return NULL;
+    }
+    while (root->right != NULL) {  // Keep traversing to the rightmost node
+        root = root->right;
+    }
+    return root;  // Return the rightmost node
+}
