@@ -21,3 +21,13 @@ int height(struct TreeNode* root)
     // Return the larger height of left or right subtree plus 1 for the current node
     return (leftHeight > rightHeight ? leftHeight : rightHeight) + 1;
 }
+void print( node *root)  
+{  
+if (root != NULL)  
+{  
+    print( root->left);  
+    if(root->left == NULL && root->right == NULL)  
+        printf("%d",root->val);  
+    printf( root->right);  
+}  
+}
