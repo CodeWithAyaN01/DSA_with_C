@@ -15,13 +15,14 @@ int pop()
 }
 int main()
 {
-        char post[25],sym;
+        char postfix[25],sym;
         int op1,op2,i;
         printf("Enter the postfix expression:\n");
-        scanf("%s",post);
-        for(i=0;i<strlen(post);i++)
+        scanf("%s",postfix);
+        // gets(postfix); also works 
+        for(i=0 ; i<strlen(postfix);i++)
         {
-                sym=post[i];
+                sym=postfix[i];
                 switch(sym)
                 {
                         case '+':op2=pop();
@@ -44,6 +45,5 @@ int main()
                                 break;
                 }
         }
-printf("The result if %d\n",pop());
-// display();
+printf("The result is %d\n",pop());
 }
