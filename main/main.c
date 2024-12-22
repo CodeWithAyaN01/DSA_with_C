@@ -1,102 +1,145 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-typedef struct 
+struct Node
 {
     int data;
-    Node *next;
-}Node;
-
+    struct Node *next;
+};
+typedef struct Node Node;
 Node *start = NULL;
 
 Node *creat()
 {
-    Node *nn;
-    nn = malloc(sizeof(Node*));
-    if (nn = NULL)
+    Node *newnode;
+    newnode = (Node *)malloc(sizeof(Node));
+    if (newnode == NULL)
     {
-        printf("Memory full");
-    }else
+        printf("Overflow mwmory:");
+        return NULL;
+    }
+    else
     {
-        printf("Enter the data: ");scanf("%d",nn->data);
-        nn->next = NULL;
-        return nn;
+        printf("Enter data");
+        scanf("%d",&newnode->data);
+        newnode->next = NULL;
+        return newnode;
     }
 }
-void insertF()
+void Insert_f()
 {
-    Node *nn;
-    nn->next = start;
-    start = nn;
+    Node *NN;
+    NN = creat();
+    NN->next = start;
+    start = NN;
 }
-void delFront()
+
+void Delete_f()
 {
     Node *temp;
     if (start == NULL)
     {
-        printf("Empty only: ");
+        printf("Empty");
     }
     else
     {
-        temp = start; // not imp
+        temp = start;
         start = start->next;
         free(temp);
-    }    
+    }
 }
-void insertEnd()
+
+void insert_End()
 {
-    Node *temp = start;
-    Node *nn = creat();
+    Node *NN;
+    Node *temp;
+    NN = creat();
     if (start == NULL)
     {
-        start = nn;
-    }else
+        start = NN;
+    }
+    else
     {
         temp = start;
-        while (temp->next != NULL)
+        while(temp->next != NULL)
         {
             temp = temp->next;
         }
-        temp->next = nn;
+        temp->next = NN;
     }
 }
-void deleteend()
+
+void Delete_end()
 {
-    Node *temp;
-    temp = start;
+    Node *temp = start;
     Node *prev;
     if (start == NULL)
     {
-        printf("Empty: ");
+        printf("Empty");
+        return;
     }
-    if(start->next = NULL)
+    if (start->next == NULL)
     {
-        start = NULL;
+        start =NULL;
     }
     else
     {
-        while(temp->next !=NULL)
+        while (temp->next != NULL)
         {
-           prev = temp;
-           temp = temp->next;
+            prev = temp;
+            temp = temp->next;
         }
         prev->next = NULL;
     }
     free(temp);
 }
-
 void display()
 {
-    int count = 0;
+    int c = 0;
     Node *temp;
     if (start == NULL)
     {
-        printf("Empty:");
-    }
-    else
+        printf("Empty");
+
+    }else
     {
         temp = start;
-        printf("the details are: ");
-        while (temp)
+        while(temp != NULL)
+        {
+            printf("Data is %d\n",temp->data);
+            c++;
+            temp = temp->next;
+        }
+        printf("number of node si %d",c);
+    }
+
+}
+   
+int main() {
+    int n;
+    while (1) {
+        printf("\nEnter your choice:\n1: Insert Front\n2: Insert End\n3: Delete Front\n4: Delete End\n5: Display\n0: Exit\n");
+        scanf("%d", &n);
+        switch (n) {
+            case 1:
+                Insert_f();
+                break;
+            case 2:
+                insert_End();
+                break;
+            case 3:
+                Delete_f();
+                break;
+            case 4:
+                Delete_end();
+                break;
+            case 5:
+                display();
+                break;
+            case 0:
+                return 0;
+            default:
+                printf("Invalid choice\n");
+        }
     }
 }
