@@ -47,9 +47,9 @@ void display()
 void palindrome()
 {
 	int n,num,rem,i;
-	printf("\nEnter n");
-	scanf("%d",&n);
 	top=-1;
+	printf("\nEnter number");
+	scanf("%d",&n);
 	num=n;
 	while(num!=0)
 	{

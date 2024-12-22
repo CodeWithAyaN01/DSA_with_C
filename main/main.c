@@ -1,25 +1,66 @@
-#include <stdio.h>
-// Function declaration
-int addNumbers(int a, int b);
-int subNumbers(int a, int b)
+#include<stdio.h>
+#include<conio.h>
+#include<ctype.h>
+
+char stack[100];
+int top = -1;
+void push(char opr)
 {
-    return a-b;
+    stack[++top] = opr;
 }
-int main() {
-    int num1 = 5, num2 = 10, sum;
-    int sub;
-
-    // Function call
-    sum = addNumbers(num1, num2);
-    sub = subNumbers(num1, num2);
-
-    printf("The sum of %d and %d is %d\n", num1, num2, sum);
-    printf("sub is : %d",sub);
-
-    return 0;
+char pop()
+{
+    return stack[top--];
 }
+int prec(char opr)
+{
+    if(opr=='^'||opr=='%') return(4);
+	if(opr=='*'||opr=='/') return(3);
+	if(opr=='+'||opr=='-') return(2);
+	if(opr=='('||opr=='#') return(1); 
+}
+void main()
+{
+    char infix[100],postfix[100];
+    int i,j = 0;
 
-// Function definition
-int addNumbers(int a, int b) {
-    return a + b;
+    printf("Enter infix Expresion: ");
+    gets(infix);
+    push('#');
+    
+    for (i = 0 ; infix[i] != '\0' ; i++)
+    {
+        if (infix[i] = '(')
+        {
+            push('(');
+        }
+        else if (isalnum(infix[i]))
+        {
+            postfix[j++] = infix[i];
+        }
+        else if (infix[i] = ')')
+        {
+            while (stack[top] != '(')
+            {
+                postfix[j++] = pop();
+            }
+            pop();
+        }
+        else
+        {
+            while( prec(stack[top]) >= prec(infix[i]))
+            {
+                postfix[j++] = pop();
+            }
+            push(infix[i]);
+        }
+    }
+    
+    while (stack[top] != '#')
+    {
+        postfix[j++] = pop();
+    }
+    postfix[j] = '\0';
+    printf("\n INFIX EXPRESSION = %s",infix);
+    printf("\n POSTFIX EXPRESSION = %s",postfix);
 }

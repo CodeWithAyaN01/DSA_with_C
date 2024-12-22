@@ -1,16 +1,16 @@
-//4.	Design, Develop and Implement a Program in C for converting an Infix Expression to Postfix Expression. Program should support for both parenthesized and free parenthesized expressions with the operators: +, -, *, /, %(Remainder), ^(Power) and alphanumeric operands.
+//4.Design, Develop and Implement a Program in C for converting an Infix Expression to Postfix Expression. Program should support for both parenthesized and free parenthesized expressions with the operators: +, -, *, /, %(Remainder), ^(Power) and alphanumeric operands.
 #include<stdio.h>
 #include<conio.h>
 #include<ctype.h>
-char stk[100];
+char stack[100];
 int top = -1;
 void push(char opr)
 {	
-	stk[++top] = opr;
+	stack[++top] = opr;
 }	
 char pop()
 {	
-	return(stk[top--]);
+	return(stack[top--]);
 }
 int preced(char opr)
 {	
@@ -25,8 +25,8 @@ void main()
 	int i,j=0;
 	printf("\nEnter valid INFIX expression\n");
 	scanf("%s",infix);
-	push('#');
 
+	push('#');
 	for(i=0; infix[i]!='\0'; i++)
 	{	
 		if(infix[i]=='(')
@@ -37,18 +37,18 @@ void main()
     
 		else if (infix[i]==')')
 		{   
-			 while(stk[top] != '(')
+			 while(stack[top] != '(')
 			    postfix[j++] = pop();
-			pop();
+			pop(); // for ) 
 		}
         else
 		{        
-			while( preced(stk[top]) >= preced(infix[i]) )
+			while( preced(stack[top]) >= preced(infix[i]) )
 			       postfix[j++] = pop();
 			push(infix[i]);
 		}
     }
-while(stk[top] != '#')
+while(stack[top] != '#')
 	postfix[j++] = pop();
 postfix[j]='\0';
 printf("\n INFIX EXPRESSION = %s",infix);

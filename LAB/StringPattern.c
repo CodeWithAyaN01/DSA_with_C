@@ -35,8 +35,6 @@ void pat_match()
         else//pattern mismatch
         {
             ans[j++]=str[c++];
-            // j++;
-            // c++;
             m=c;
             i=0;
         }
