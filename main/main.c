@@ -1,145 +1,66 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 
-struct Node
+typedef struct 
 {
-    int data;
-    struct Node *next;
-};
-typedef struct Node Node;
-Node *start = NULL;
+    char *day;
+    int date;
+    char *activity;
+}calendar;
 
-Node *creat()
+calendar *create()
 {
-    Node *newnode;
-    newnode = (Node *)malloc(sizeof(Node));
-    if (newnode == NULL)
-    {
-        printf("Overflow mwmory:");
-        return NULL;
-    }
-    else
-    {
-        printf("Enter data");
-        scanf("%d",&newnode->data);
-        newnode->next = NULL;
-        return newnode;
-    }
-}
-void Insert_f()
-{
-    Node *NN;
-    NN = creat();
-    NN->next = start;
-    start = NN;
+    calendar *week;
+    week = (calendar*)calloc(7,sizeof(calendar));
+    return week;
 }
 
-void Delete_f()
+void read(calendar *week)
 {
-    Node *temp;
-    if (start == NULL)
+    char day[200],activity[33];
+    printf("Enter week details (week_day,date,activity)\n\n");
+    for (int i = 0 ; i<7 ; i++)
     {
-        printf("Empty");
-    }
-    else
-    {
-        temp = start;
-        start = start->next;
-        free(temp);
+        printf("For Day %d",i+1);
+        scanf("%s%d%s",day,&week[i].date,activity);
+        week[i].day = strdup(day);
+        week[i].activity = strdup(activity);
     }
 }
 
-void insert_End()
+void display(calendar *week)
 {
-    Node *NN;
-    Node *temp;
-    NN = creat();
-    if (start == NULL)
+    printf("week Activity \nDay\nDate\nActivity");
+    ;for (int i = 0 ; i< 7;i++)
     {
-        start = NN;
+        printf("%s\t%d\t%s\t\n",week[i].day,week[i].date,week[i].activity);
     }
-    else
+}
+int main()
+{
+    int choice;
+    calendar *week;
+    while (1)
     {
-        temp = start;
-        while(temp->next != NULL)
+        printf("Enter 1.Create \n 2.read \n 3.display \n4.exit");
+        printf("Enter you choice: ");
+        scanf("%d",&choice);
+        switch(choice)
         {
-            temp = temp->next;
-        }
-        temp->next = NN;
-    }
-}
+            case 1: week = create();
+                if(week != NULL)
+                {
+                    printf("created sucessfully");
+                }
+                break;
+            
+            case 2: read(week);
+            break;
 
-void Delete_end()
-{
-    Node *temp = start;
-    Node *prev;
-    if (start == NULL)
-    {
-        printf("Empty");
-        return;
-    }
-    if (start->next == NULL)
-    {
-        start =NULL;
-    }
-    else
-    {
-        while (temp->next != NULL)
-        {
-            prev = temp;
-            temp = temp->next;
-        }
-        prev->next = NULL;
-    }
-    free(temp);
-}
-void display()
-{
-    int c = 0;
-    Node *temp;
-    if (start == NULL)
-    {
-        printf("Empty");
-
-    }else
-    {
-        temp = start;
-        while(temp != NULL)
-        {
-            printf("Data is %d\n",temp->data);
-            c++;
-            temp = temp->next;
-        }
-        printf("number of node si %d",c);
-    }
-
-}
-   
-int main() {
-    int n;
-    while (1) {
-        printf("\nEnter your choice:\n1: Insert Front\n2: Insert End\n3: Delete Front\n4: Delete End\n5: Display\n0: Exit\n");
-        scanf("%d", &n);
-        switch (n) {
-            case 1:
-                Insert_f();
-                break;
-            case 2:
-                insert_End();
-                break;
-            case 3:
-                Delete_f();
-                break;
-            case 4:
-                Delete_end();
-                break;
-            case 5:
-                display();
-                break;
-            case 0:
-                return 0;
-            default:
-                printf("Invalid choice\n");
+            case 3: display(week);
+            break;
+            case 4: return 0;
         }
     }
 }

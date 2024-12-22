@@ -8,7 +8,6 @@ the address space L. Resolve the collision (if any) using linear probing.*/
 #include<stdio.h>
 #include<stdlib.h>
 int L[100],max=10;
-// float A = 0.1352;
 void display()
 {
     int i;

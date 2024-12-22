@@ -32,8 +32,8 @@ Node *create()
 		printf("\n Enter USN, name, branch, sem, phone number");
 		scanf("%s%s%s%d%s",newNode->usn,newNode->name,newNode->branch,&newNode->sem,newNode->phno);
 		newNode->next=NULL;
-		return newNode;
 	}
+	return newNode;
 }
 void insert_front()
 {
