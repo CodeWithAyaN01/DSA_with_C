@@ -1,2 +1,0 @@
-
-            postfix[j++] = infix[i];
