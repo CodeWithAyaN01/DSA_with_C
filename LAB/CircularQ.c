@@ -45,6 +45,7 @@ int main()
 {
     int choice;
     char element;
+    char nn;
     while(1)
     {
         printf("\n Enter 1:insert\t Enter 2:delete\t Enter 3:display\t Enter 4:exit\t");
@@ -52,7 +53,9 @@ int main()
         switch(choice)
         {
             case 1: printf("\n Enter the element: ");
-                    element=getche();
+                    // fflush(stdin);
+                    // element=getchar();
+                    scanf(" %c",&element); // exact 
                     insert(element);
                     break;
             case 2: del();

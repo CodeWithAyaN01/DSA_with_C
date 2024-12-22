@@ -1,66 +1,102 @@
 #include<stdio.h>
-#include<conio.h>
-#include<ctype.h>
+#include<stdlib.h>
 
-char stack[100];
-int top = -1;
-void push(char opr)
+typedef struct 
 {
-    stack[++top] = opr;
-}
-char pop()
-{
-    return stack[top--];
-}
-int prec(char opr)
-{
-    if(opr=='^'||opr=='%') return(4);
-	if(opr=='*'||opr=='/') return(3);
-	if(opr=='+'||opr=='-') return(2);
-	if(opr=='('||opr=='#') return(1); 
-}
-void main()
-{
-    char infix[100],postfix[100];
-    int i,j = 0;
+    int data;
+    Node *next;
+}Node;
 
-    printf("Enter infix Expresion: ");
-    gets(infix);
-    push('#');
-    
-    for (i = 0 ; infix[i] != '\0' ; i++)
+Node *start = NULL;
+
+Node *creat()
+{
+    Node *nn;
+    nn = malloc(sizeof(Node*));
+    if (nn = NULL)
     {
-        if (infix[i] = '(')
-        {
-            push('(');
-        }
-        else if (isalnum(infix[i]))
-        {
-            postfix[j++] = infix[i];
-        }
-        else if (infix[i] = ')')
-        {
-            while (stack[top] != '(')
-            {
-                postfix[j++] = pop();
-            }
-            pop();
-        }
-        else
-        {
-            while( prec(stack[top]) >= prec(infix[i]))
-            {
-                postfix[j++] = pop();
-            }
-            push(infix[i]);
-        }
-    }
-    
-    while (stack[top] != '#')
+        printf("Memory full");
+    }else
     {
-        postfix[j++] = pop();
+        printf("Enter the data: ");scanf("%d",nn->data);
+        nn->next = NULL;
+        return nn;
     }
-    postfix[j] = '\0';
-    printf("\n INFIX EXPRESSION = %s",infix);
-    printf("\n POSTFIX EXPRESSION = %s",postfix);
+}
+void insertF()
+{
+    Node *nn;
+    nn->next = start;
+    start = nn;
+}
+void delFront()
+{
+    Node *temp;
+    if (start == NULL)
+    {
+        printf("Empty only: ");
+    }
+    else
+    {
+        temp = start; // not imp
+        start = start->next;
+        free(temp);
+    }    
+}
+void insertEnd()
+{
+    Node *temp = start;
+    Node *nn = creat();
+    if (start == NULL)
+    {
+        start = nn;
+    }else
+    {
+        temp = start;
+        while (temp->next != NULL)
+        {
+            temp = temp->next;
+        }
+        temp->next = nn;
+    }
+}
+void deleteend()
+{
+    Node *temp;
+    temp = start;
+    Node *prev;
+    if (start == NULL)
+    {
+        printf("Empty: ");
+    }
+    if(start->next = NULL)
+    {
+        start = NULL;
+    }
+    else
+    {
+        while(temp->next !=NULL)
+        {
+           prev = temp;
+           temp = temp->next;
+        }
+        prev->next = NULL;
+    }
+    free(temp);
+}
+
+void display()
+{
+    int count = 0;
+    Node *temp;
+    if (start == NULL)
+    {
+        printf("Empty:");
+    }
+    else
+    {
+        temp = start;
+        printf("the details are: ");
+        while (temp)
+    }
 }

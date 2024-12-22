@@ -3,7 +3,7 @@ Linked List (SLL) of Student Data with the fields: USN, Name, Programme,
 Sem, PhNo 
 a. Create a SLL of N Students Data by using front insertion. 
 b. Display the status of SLL and count the number of Nodes in it 
-c. Perform Insertion / Deletion at End of SLL 
+c. Perform Insertion / Deletion at End of SLL
 d. Perform Insertion / Deletion at Front of SLL(Demonstration of stack) 
 e. Exit*/
 #include<stdio.h>
