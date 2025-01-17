@@ -33,7 +33,7 @@ void insert(int data)
     }
     if (rear == size-1)
     {
-        printf("Queue is full");
+        printf("Queue is full\n");
         return;
     }
     queue[++rear] = data;
@@ -45,7 +45,7 @@ int delete()
     {
         printf("Under flow conditionas");
     }
-    printf("Item deleted is %d ",queue[front]);
+    printf("Item deleted is %d \n",queue[front]);
     return queue[front++];
 }
 void display() 
@@ -57,7 +57,17 @@ void display()
         front = 0; rear = -1; 
         return; 
     } 
-    printf(" the contents of queue are"); 
+    printf("The contents of queue are\n"); 
     for ( i=front; i<= rear; i++) 
-    printf("%d ",queue[i]); 
+    printf("%d\t",queue[i]); 
+}
+int main()
+{
+    insert(23);
+    insert(26);
+    insert(3);
+    insert(73);
+    delete();
+    display();
+
 }
