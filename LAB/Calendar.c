@@ -18,15 +18,14 @@ typedef struct
 calendar* create()
 {
 	calendar *week;
-	week=(calendar*)calloc(7,sizeof(calendar));
+	week=(calendar*)calloc(7,sizeof(calendar)); // just like array of 7
 	return week;
 }
 void read(calendar *week)
 {
-	int i;
 	char day[20],activity[50];
 	printf("Enter week details(week day,date, activity)");
-	for(i=0;i<7;i++)
+	for(int i=0;i<7;i++)
 	{
 		printf("Day %d:",i+1);
 		scanf("%s%d%s",day,&week[i].date,activity);

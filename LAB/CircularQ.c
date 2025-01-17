@@ -30,7 +30,7 @@ void display()
 {
     int i,c;
     if(count==0)
-    printf("\n Queue is empty");
+        printf("\n Queue is empty");
     else 
     {
         i=front;

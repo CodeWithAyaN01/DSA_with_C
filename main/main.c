@@ -1,66 +1,58 @@
 #include<stdio.h>
+#include<conio.h>
 #include<stdlib.h>
-#include<string.h>
+#include<ctype.h>
+char stack[100];
+int top = -1;
 
-typedef struct 
+void push(char elem)
 {
-    char *day;
-    int date;
-    char *activity;
-}calendar;
-
-calendar *create()
-{
-    calendar *week;
-    week = (calendar*)calloc(7,sizeof(calendar));
-    return week;
+    stack[++top] = elem;
 }
 
-void read(calendar *week)
+int pop()
 {
-    char day[200],activity[33];
-    printf("Enter week details (week_day,date,activity)\n\n");
-    for (int i = 0 ; i<7 ; i++)
-    {
-        printf("For Day %d",i+1);
-        scanf("%s%d%s",day,&week[i].date,activity);
-        week[i].day = strdup(day);
-        week[i].activity = strdup(activity);
-    }
+    return stack[top--];
 }
 
-void display(calendar *week)
+int prec(char elem)
 {
-    printf("week Activity \nDay\nDate\nActivity");
-    ;for (int i = 0 ; i< 7;i++)
-    {
-        printf("%s\t%d\t%s\t\n",week[i].day,week[i].date,week[i].activity);
-    }
+    if ((elem == '^') || (elem == '%')) return(4);
+    if ((elem == '*') || (elem == '/')) return(3);
+    if ((elem == '+') || (elem == '-')) return(2);
+    if ((elem == '(') || (elem == '#')) return(1);
 }
 int main()
 {
-    int choice;
-    calendar *week;
-    while (1)
-    {
-        printf("Enter 1.Create \n 2.read \n 3.display \n4.exit");
-        printf("Enter you choice: ");
-        scanf("%d",&choice);
-        switch(choice)
-        {
-            case 1: week = create();
-                if(week != NULL)
-                {
-                    printf("created sucessfully");
-                }
-                break;
-            
-            case 2: read(week);
-            break;
+    char infix[20],postfix[20];
+    int i,j=0;
+    printf("Type infix equation: ");
+    scanf("%s",infix);
+    push('#');
 
-            case 3: display(week);
-            break;
-            case 4: return 0;
+    for(i = 0; infix[i] != '\0' ; i++)
+    {
+        if (infix[i] == '(')
+            push('(');
+        else if (isalnum(infix[i]))
+            postfix[j++] = infix[i];
+        else if (infix[i] == ')')
+        {
+            while (stack[top] != '(')
+                postfix[j++] == pop();
+            pop();
         }
+        else
+        {
+            while (prec(stack[top]) >= prec(infix[i]))
+                postfix[j++] = pop();
+            push(infix[i]);
+        }
+
     }
+    while (stack[top] != '#')
+        postfix[j++] = pop();
+    postfix[j] = '\0';
+    printf("\n INFIX EXPRESSION = %s",infix);
+	printf("\n POSTFIX EXPRESSION = %s",postfix);
 }

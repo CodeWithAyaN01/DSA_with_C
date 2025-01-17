@@ -25,8 +25,8 @@ void main()
 	int i,j=0;
 	printf("\nEnter valid INFIX expression\n");
 	scanf("%s",infix);
-
 	push('#');
+
 	for(i=0; infix[i]!='\0'; i++)
 	{	
 		if(infix[i]=='(')
@@ -48,10 +48,10 @@ void main()
 			push(infix[i]);
 		}
     }
-while(stack[top] != '#')
-	postfix[j++] = pop();
-postfix[j]='\0';
-printf("\n INFIX EXPRESSION = %s",infix);
-printf("\n POSTFIX EXPRESSION = %s",postfix);
-getch();
+	while(stack[top] != '#')
+		postfix[j++] = pop();
+	postfix[j]='\0';
+	printf("\n INFIX EXPRESSION = %s",infix);
+	printf("\n POSTFIX EXPRESSION = %s",postfix);
+	getch();
 }
