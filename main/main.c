@@ -1,58 +1,61 @@
 #include<stdio.h>
-#include<conio.h>
-#include<stdlib.h>
-#include<ctype.h>
-char stack[100];
-int top = -1;
-
-void push(char elem)
+#include<stdio.h>
+#include<string.h>
+#include<stdbool.h>
+void StringCon(char str1[20] , char str2[20])
 {
-    stack[++top] = elem;
+    int len1 = strlen(str1);
+    int len2 = strlen(str2);
+    // int j = 0;
+    for (int i = 0 ; i<=len2 ; i++)
+    {
+        str1[len1] = str2[i];
+        len1++;
+    }
+    str1[len1] = '\0';
+    printf("%s",str1);
 }
-
-int pop()
+void StringComp(char str1[20] , char str2[20])
 {
-    return stack[top--];
-}
-
-int prec(char elem)
-{
-    if ((elem == '^') || (elem == '%')) return(4);
-    if ((elem == '*') || (elem == '/')) return(3);
-    if ((elem == '+') || (elem == '-')) return(2);
-    if ((elem == '(') || (elem == '#')) return(1);
+    int len1 = strlen(str1);
+    int len2 = strlen(str2);
+    int Result;
+    if (len1 != len2)
+    {
+        printf("Different: ");
+        return;
+    }
+    else
+    {
+        int i=0;
+        while(str1[i] != '\0')
+        {
+            if (str1[i] == str2[i])
+            {
+                Result = 1;
+            }
+            else
+            {
+                Result = 0;
+                return;
+            }
+            i++;
+        }
+    }
+    if (Result)
+    {
+        printf("The String Are same");
+    }else {
+        printf("String are not same");
+    }
 }
 int main()
 {
-    char infix[20],postfix[20];
-    int i,j=0;
-    printf("Type infix equation: ");
-    scanf("%s",infix);
-    push('#');
-
-    for(i = 0; infix[i] != '\0' ; i++)
-    {
-        if (infix[i] == '(')
-            push('(');
-        else if (isalnum(infix[i]))
-            postfix[j++] = infix[i];
-        else if (infix[i] == ')')
-        {
-            while (stack[top] != '(')
-                postfix[j++] == pop();
-            pop();
-        }
-        else
-        {
-            while (prec(stack[top]) >= prec(infix[i]))
-                postfix[j++] = pop();
-            push(infix[i]);
-        }
-
-    }
-    while (stack[top] != '#')
-        postfix[j++] = pop();
-    postfix[j] = '\0';
-    printf("\n INFIX EXPRESSION = %s",infix);
-	printf("\n POSTFIX EXPRESSION = %s",postfix);
+    char s1[10] , s2[10];
+    printf("Enter string 1: ");
+    gets(s1);
+    printf("Enter string 2: ");
+    gets(s2);
+    // StringCon(s1,s2);
+    StringComp(s1,s2);
 }
