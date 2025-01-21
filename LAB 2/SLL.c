@@ -42,18 +42,6 @@ void insert_front()
 	newnode->next=start; // the node pointes to the start of the LL
 	start=newnode; // updating the list to the start ;
 }
-void delete_front()
-{
-	Node *temp;
-	if(start==NULL)
-		printf("\n List is empty");
-	else 
-	{
-		temp=start;
-		start=start->next;
-		free(temp);
-	}
-}
 void insert_end() 
 {
 	Node *NewNode,*temp;
@@ -68,6 +56,19 @@ void insert_end()
 		temp->next=NewNode;
 	}
 }
+void delete_front()
+{
+	Node *temp;
+	if(start==NULL)
+		printf("\n List is empty");
+	else 
+	{
+		temp=start;
+		start=start->next;
+		free(temp);
+	}
+}
+
 void delete_end() 
 {
 	Node *temp=start,*prev;

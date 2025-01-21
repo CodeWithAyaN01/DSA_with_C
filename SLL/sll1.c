@@ -47,15 +47,15 @@ void insertRear()
     }
     temp->next = nn;
 }
-void createNnodes()
-{
-    int i , n;
-    printf("Enter the number of Students");
-    scanf("%d",&n);
-    for (i = 0 ; i<=n ; i++){
-        insertFront();
-    }
-}
+// void createNnodes()
+// {
+//     int i , n;
+//     printf("Enter the number of Students");
+//     scanf("%d",&n);
+//     for (i = 0 ; i<=n ; i++){
+//         insertFront();
+//     }
+// }
 
 void deleteFront() // increment start
 {

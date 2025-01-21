@@ -124,6 +124,30 @@ void display() {
     printf("(back to start)\n");
 }
 
+// Display the contents of the Circular SLL and count the number of nodes
+// void display_and_count() {
+//     if (start == NULL) { // List is empty
+//         printf("The list is empty.\n");
+//         return;
+//     }
+
+//     node* temp = start;
+//     int count = 0; // Initialize the node counter
+
+//     printf("The contents of the list are: ");
+//     while (1) {
+//         printf("%d -> ", temp->data);
+//         count++;
+//         temp = temp->next;
+//         if (temp == start) { // Stop when back to the start
+//             break;
+//         }
+//     }
+
+//     printf("(back to start)\n");
+//     printf("Total number of nodes: %d\n", count);
+// }
+
 // Main function
 int main() {
     int choice;
