@@ -1,0 +1,26 @@
+\documentclass{article} 
+\begin{document} 
+% Title and Author 
+\title{Sample Abstract} 
+\author{Author Name} 
+\date{} % Remove date 
+\maketitle 
+% Abstract Section 
+\section*{Abstract} 
+This is a sample abstract. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+Sed ac velit sit amet lacus consequat dignissim. Mauris tincidunt justo eget velit dictum, vel 
+consectetur libero consectetur. Nullam auctor ultricies eros, quis eleifend metus blandit et. 
+Phasellus euismod massa id orci ultrices, quis feugiat urna consequat. Vivamus auctor dolor 
+vel vestibulum tincidunt.  
+Etiam ultricies nulla in dolor maximus bibendum. Proin vel metus pretium, 
+laoreet est nec, ultricies orci. Pellentesque habitant morbi tristique senectus et netus et 
+malesuada fames ac turpis egestas. Integer faucibus commodo orci, ac tempus sapien 
+molestie nec. Phasellus ut dui nisi. Nullam non erat nec turpis faucibus hendrerit. Curabitur 
+nec mauris sit amet ligula facilisis pharetra. Duis id dolor vitae sem venenatis ultrices. 
+% Additional Sections (if needed) 
+% \section{Introduction} 
+% \section{Methodology} 
+% \section{Results} 
+% \section{Discussion} 
+% \section{Conclusion} 
+\end{document} 
