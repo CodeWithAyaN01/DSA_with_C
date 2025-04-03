@@ -1,0 +1,40 @@
+\documentclass[a4paper]{article} 
+\usepackage{graphicx}  % for including images 
+\usepackage{geometry}  % for setting page dimensions 
+\usepackage{setspace}  % for setting line spacing 
+% Define page dimensions 
+\geometry{margin=1in} 
+\begin{document} 
+\thispagestyle{empty}  % Remove page number from the certificate page 
+% Title and Logo 
+\begin{center} 
+\includegraphics[width=0.3\textwidth]{vtu_logo.png}  % University logo 
+ 
+ 
+  \vspace{1cm} 
+   
+  \textbf{\Large Certificate of Completion} 
+  \vspace{0.5cm} 
+ \end{center} 
+  
+ % Certificate Text 
+ \noindent 
+ This is to certify that \underline{\hspace{6cm}} (Registration Number: 
+\underline{\hspace{4cm}}) has successfully completed the course on 
+\underline{\hspace{8cm}} conducted by the Department of \underline{\hspace{6cm}} at 
+\underline{\hspace{8cm}}. 
+  
+ \vspace{1cm} 
+  
+ % Date 
+ \noindent 
+ Date: \underline{\hspace{4cm}} 
+  
+ \vfill 
+  
+ % Signature 
+ \begin{flushright} 
+  \textbf{Signature:} \underline{\hspace{6cm}} 
+ \end{flushright} 
+  
+\end{document} 
