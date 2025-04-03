@@ -1,0 +1,47 @@
+
+\documentclass{article} 
+\usepackage{graphicx}  % for including images 
+\usepackage{geometry}  % for setting page dimensions 
+\usepackage{setspace}  % for setting line spacing 
+     
+% Define page dimensions 
+\geometry{a4paper, margin=1in} 
+ 
+\begin{document} 
+  
+ \begin{titlepage} 
+  \centering 
+   
+  % VTU Logo 
+  \includegraphics[width=0.3\textwidth]{vtu_logo.png} 
+  \vspace{0.5cm} 
+   
+  % Title 
+  \textbf{\LARGE Project Report Title} 
+  \vspace{1cm} 
+   
+  % Student Information 
+  \textbf{By}\\ 
+  Your Name\\ 
+  USN: 1ABCD23\\ 
+  Branch: Information Science\\ 
+  \vspace{1cm} 
+   
+  % Guide Information 
+  \textbf{Guide:}\\ 
+  Guide Name\\ 
+  Designation\\ 
+  Department of Information Science\\ 
+  \vspace{1.5cm} 
+   
+  % Institute Details 
+  \textbf{Department of Information Science and Engineering}\\ 
+  College Name\\ 
+  Location\\ 
+  \vspace{1cm} 
+   
+  % Date 
+  \textbf{Date: \today} % Use today's date 
+ \end{titlepage} 
+    
+\end{document} 

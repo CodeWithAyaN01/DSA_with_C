@@ -1,0 +1,26 @@
+ \documentclass{article} 
+\usepackage{array}  % for custom column formatting 
+\usepackage{booktabs}  % for better table rules 
+\usepackage{caption}  % for customizing table captions 
+      
+\begin{document}   
+  
+ \section*{Student Performance Table} 
+  
+ \begin{table}[h] 
+  \centering 
+  \caption{Student Marks Summary} 
+  \label{tab:student-marks} 
+  \begin{tabular}{|c|c|l|c|c|c|} 
+   \hline 
+   \textbf{S.No} & \textbf{USN} & \textbf{Student Name} & 
+\textbf{Subject1} & \textbf{Subject2} & \textbf{Subject3} \\ 
+   \hline 
+   1 & 4XX22XX001 & Name 1 & 79 & 60 & 90 \\ 
+   2 & 4XX22XX002 & Name 2 & 78 & 45 & 98 \\ 
+   3 & 4XX22XX003 & Name 3 & 36 & 75 & 59 \\ 
+   \hline 
+  \end{tabular} 
+ \end{table} 
+  
+\end{document}   
