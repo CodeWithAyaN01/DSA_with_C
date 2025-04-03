@@ -44,6 +44,7 @@ int delete()
     if (front > rear)
     {
         printf("Under flow conditionas");
+        return;
     }
     printf("Item deleted is %d \n",queue[front]);
     return queue[front++];

@@ -1,0 +1,15 @@
+\documentclass{article} 
+\usepackage{fancyhdr} 
+\fancyhf{} 
+\fancyhead[l]{header} 
+\fancyfoot[L]{Dept. of ISE, RNSIT} 
+\fancyfoot[R]{\thepage}  
+\pagestyle{fancy} 
+\begin{document} 
+% Section 1 
+\section{Section 1} 
+This is a paragraph of text in Section 1. 
+% Section 2 
+\section{Section 2}    
+This is another paragraph of text in Section 2. 
+\end{document} 
