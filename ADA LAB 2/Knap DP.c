@@ -16,7 +16,7 @@ void knapsack_DP()
             else
                 V[i][j]=max(V[i-1][j],p[i]+V[i-1][j-w[i]]);
 
-    for(i=0;i<=n;i++)
+    for(i=0;i<=n;i++) //  PRINTING
     {
         for(j=0;j<=m;j++)
             printf("%d  ",V[i][j]);

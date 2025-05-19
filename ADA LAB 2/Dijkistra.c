@@ -21,16 +21,15 @@ void dijkstra(int source)
 
     //mark source vertex - estimated for its shortest path
     s[source] = 1;
-    for(int i=0; i < n-1; i++)
+    for(int i=0; i < n-1; i++)//Find the nearest neighbour vertex
     {
-        //Find the nearest neighbour vertex
         min = 999;
         for(int j = 0; j < n; j++)
         {
             if ((s[j] == 0 ) && (min > dist[j]))
             {
                 min = dist[j];
-                w = j;
+                w = j; // used w for updating
             }
         }
         s[w]=1;

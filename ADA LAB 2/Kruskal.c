@@ -9,7 +9,7 @@ void kruskal()
         par[i]=-1;
 
     printf("the minimum spanning tree edges are...");
-    while(ne < n-1)
+    while(ne < n-1) // ne starts from 0
     {
         //Find the least cost edge
         min = 999;
@@ -33,7 +33,7 @@ void kruskal()
         {
             printf("From vertex %d to vertex %d and the cost = %d\n",a,b,min);
             mincost+=min;
-            par[v]=u;
+            par[v]=u; // yaad
             ne++;
         }
         //edge included in MST should not be considered for next iteration

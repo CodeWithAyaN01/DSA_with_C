@@ -1,57 +1,56 @@
 #include<stdio.h>
-int n,m,p[10],w[10];
-int max(int a, int b)
+int cost[10][10],n,dist[10];
+
+
+int minm(int m, int n)
 {
-    return(a>b?a:b);
+    return(( m < n) ? m: n);
 }
 
-void knapDP() {
-    int v[10][10] , i ,j;
+void dij(int source) {
+    int s[10] = {0};
+    int min,w = 0;
 
-    for (int i = 0 ; i <= n; i++) {
-        for (int j = 0 ; j<= m ; j++) {
-            if (i ==0 || j==0) {
-                v[i][j] = 0;
-            }
-            else if (j<w[i]) {
-                v[i][j] = v[i-1][j];
-            }
-            else {
-                v[i][j] = max(v[i][j],p[i] + v[i-1][j-w[i]]);
-            }
-        }
-    }
-    for (i = 0 ; i<=n;i++) {
-        for (j = 0 ; j <=m ; j++) {
-            printf("%d  ",v[i][j]);
-        }
-        printf("\n");
+    for (int i = 0 ; i< n ;i++) {
+        dist[i] = cost[source][i];
     }
 
-    // for ite included are :
+    dist[source] = 0;
+    s[source] = 1;
 
-    printf("Items included are : ");
-
-    while (n>0) {
-        if (v[n][m] != v[n-1][m]) {
-            printf("%d ",n);
-            m = m- w[n];
+    for (int i = 0 ; i<n-1 ; i++) {
+        min  = 999;
+        for (int j = 0 ; j<n; j++) {
+            if ((s[j] == 0) && (min > dist[j])) {
+                min = dist[j];
+                w = j;
+            }
         }
-        n--;
+        s[w] = 1;
+        for (int v = 0 ; v<n ; v++) {
+            if ((s[v] == 0) && (cost[w][v] != 999)){
+                dist[v] = minm(dist[v],dist[w] + cost[w][v]);
+            }
+        }
     }
 }
 
-int main() {
-    int i;
-    printf("Enter the no. of items: ");
+int main()
+{
+    int source;
+
+    printf("Enter the no.of vertices:");
     scanf("%d",&n);
-    printf("Enter the weights of n items: ");
-    for(i=1;i<=n;i++)
-        scanf("%d",&w[i]);
-    printf("Enter the prices of n items: ");
-    for(i=1;i<=n;i++)
-        scanf("%d",&p[i]);
-    printf("Enter the capacity of Knapsack: ");
-    scanf("%d",&m);
-    knapDP();
+    printf("Enter the cost matrix\n");
+    for(int i=0;i<n;i++)
+        for(int j=0;j<n;j++)
+            scanf("%d",&cost[i][j]);
+
+    printf("Enter the source vertex:");
+    scanf("%d",&source);
+    dijkstra(source);
+
+    printf("the shortest distance is...");
+    for(int i=0; i<n; i++)
+        printf("Cost from %d to %d is %d\n",source,i,dist[i]);
 }
