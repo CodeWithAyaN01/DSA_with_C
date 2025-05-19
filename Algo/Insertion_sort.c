@@ -5,14 +5,12 @@ void insertionSort(int A[] , int n) {
         int current = A[i];
         int prev = i-1;
         while (prev>=0 && A[prev] >= current) {
-            A[prev+1] = A[prev]; //  current Exchanged to prev
             prev--;
         }
         A[prev+1] = current;
     }
 }
 int main() {
-    int A[] = {1,4,6,3,0,5};
     int n = 6;
     insertionSort(A,n);
     for (int i= 0 ; i<n ; i++) {

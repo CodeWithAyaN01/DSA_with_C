@@ -1,4 +1,3 @@
-
 #include<stdio.h>
 
 int cost[10][10],n,dist[10];
