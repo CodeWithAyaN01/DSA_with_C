@@ -14,7 +14,7 @@ void knapsack_DP()
             else if(j < w[i] )//weight of the item is larger than capacity
                 V[i][j]=V[i-1][j];
             else
-                V[i][j]=max(V[i-1][j],p[i]+V[i-1][j-w[i]]);//maximization
+                V[i][j]=max(V[i-1][j],p[i]+V[i-1][j-w[i]]);
 
     for(i=0;i<=n;i++)
     {
