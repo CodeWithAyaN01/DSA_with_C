@@ -11,16 +11,19 @@ void knapsack_DP()
         for(j=0;j<=m;j++)
             if(i==0 || j==0)
                 V[i][j]=0;
-            else if(j<w[i])//weight of the item is larger than capacity
+            else if(j < w[i] )//weight of the item is larger than capacity
                 V[i][j]=V[i-1][j];
             else
                 V[i][j]=max(V[i-1][j],p[i]+V[i-1][j-w[i]]);//maximization
+
+
     for(i=0;i<=n;i++)
     {
         for(j=0;j<=m;j++)
             printf("%d  ",V[i][j]);
         printf("\n");
     }
+
     /* tracking back the optimal solution vector */
     printf("Items included are:");
     while(n > 0)
