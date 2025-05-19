@@ -4,7 +4,6 @@ int max(int a, int b)
 {
     return(a>b?a:b);
 }
-
 void knapsack_DP()
 {
     int V[10][10],i,j;
