@@ -11,7 +11,8 @@ int minm(int m, int n)
 void dijkstra(int source)
 {
     int s[10]={0};
-    int min, w=0;
+    int min;
+    int w = 0;
 
     for(int i=0;i<n;i++)
         dist[i]=cost[source][i];
